@@ -1,24 +1,55 @@
+import { Footer } from "@/components/CTASection";
 export default function AboutPage() {
   return (
-    <section className="container-padded py-20">
-      <div className="max-w-3xl">
-        <h1 className="text-4xl font-semibold tracking-tight">
-          About LLC Market
-        </h1>
-        <p className="mt-6 text-lg text-neutral-700">
-          We designed LLC Market for businesses that value clarity, compliance,
-          and customer trust. This demo storefront showcases a premium corporate
-          aesthetic you can adapt for services or product listings. The layout
-          favors readability, confident whitespace, and quiet animations that
-          whisper “we’re legit.”
-        </p>
-        <p className="mt-4 text-neutral-700">
-          The stack is modern and boring on purpose: Next.js for performance and
-          routing, Tailwind for consistent design, and a small component kit
-          that keeps things elegant without bloat. Replace the placeholder copy
-          with your offer, wire a form or CRM, and you’re ready for prospects.
-        </p>
-      </div>
-    </section>
+    <div
+      className="bg-no-repeat bg-bottom"
+      style={{
+        backgroundImage: `url('/assets/images/beige.webp')`,
+        backgroundSize: "100%",
+      }}
+    >
+      <section className="relative py-24">
+        {/* Soft background texture */}
+        <div className="absolute inset-0 opacity-[0.12] bg-[url('/assets/images/paper-texture.png')] bg-repeat pointer-events-none" />
+        <div className="container-page relative z-10">
+          <div className="max-w-4xl mx-auto">
+            {/* Header */}
+            <h1 className="text-5xl font-light tracking-tight text-[#3f2f2d] animate-textIn">
+              About LLC Market
+            </h1>
+            <p className="mt-5 text-lg text-[#6a5854] leading-relaxed max-w-3xl animate-textInSlow">
+              LLC Market was built for founders and operators who prefer clarity
+              over clutter. The experience is designed to feel clean, corporate,
+              and quietly confident, the type of storefront that says “we know
+              what we’re doing” without raising its voice.
+            </p>
+            <p className="mt-4 text-[#6a5854] leading-relaxed max-w-3xl animate-textInSlower">
+              The stack stays intentionally simple. Next.js keeps everything
+              fast and predictable, Tailwind maintains visual consistency, and
+              the UI components follow a calm, modern aesthetic with enough
+              polish to feel premium. Replace the copy, plug in your CRM or
+              backend, and you’ve got a sales-ready presence that looks
+              trustworthy out of the box.
+            </p>
+            {/* Decorative Divider */}
+            <div className="mt-16 h-[1px] w-full bg-[#e9dcd8]"></div>
+            {/* Extra section */}
+            <div className="mt-12 max-w-3xl">
+              <h2 className="text-3xl font-light text-[#3f2f2d]">
+                A storefront that feels serious
+              </h2>
+              <p className="mt-4 text-[#6a5854] leading-relaxed">
+                Whether you’re offering filings, consulting, digital products,
+                or anything that benefits from a clean corporate look, this
+                design system adapts easily. The colors stay warm and minimal,
+                the spacing stays generous, and the tone stays professional
+                without feeling stiff.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <Footer />
+    </div>
   );
 }

@@ -1,15 +1,25 @@
 import { HeroBusiness } from "@/components/HeroBusiness";
 import { ProductGrid } from "@/components/ProductGrid";
-import { FeatureRow } from "@/components/FeatureRow";
-import { CTASection } from "@/components/CTASection";
+import { RitualSection } from "@/components/FeatureRow";
+import { Footer } from "@/components/CTASection";
+import { AuraShowcase } from "@/components/AuraShowcase";
+import CatalogPromo from "@/components/CatalogPromoNew";
 
 export default function Page() {
   return (
-    <div className="space-y-24 md:space-y-28">
+    <div
+      className="bg-no-repeat bg-bottom"
+      style={{
+        backgroundImage: `url('/assets/images/beige.webp')`,
+        backgroundSize: "100%",
+      }}
+    >
       <HeroBusiness />
+      <AuraShowcase />
       <ProductGrid />
-      <FeatureRow />
-      <CTASection />
+      <CatalogPromo />
+      <RitualSection />
+      <Footer />
     </div>
   );
 }

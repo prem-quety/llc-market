@@ -1,74 +1,160 @@
-type Product = {
-  name: string;
-  blurb: string;
-  img: string;
-};
+"use client";
 
-const products: Product[] = [
-  {
-    name: "MacBook Pro 14”",
-    blurb:
-      "M-series performance for devs, designers, and people who bully spreadsheets.",
-    img: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?q=80&w=1200&auto=format&fit=crop",
-  },
-  {
-    name: "iPhone 15 Pro",
-    blurb:
-      "Business-ready. Great battery. Your sales team stops ‘forgetting’ chargers.",
-    img: "https://images.unsplash.com/photo-1603899122779-90b8f2a3f297?q=80&w=1200&auto=format&fit=crop",
-  },
-  {
-    name: "Studio Display",
-    blurb:
-      "5K clarity that makes dashboards feel like art. Numbers have never looked so smug.",
-    img: "https://images.unsplash.com/photo-1545235617-9465d2a55698?q=80&w=1200&auto=format&fit=crop",
-  },
-  {
-    name: "AirPods Pro",
-    blurb:
-      "Focus, minus the open-office noises and life choices of your coworkers.",
-    img: "https://images.unsplash.com/photo-1588421357574-87938a86fa28?q=80&w=1200&auto=format&fit=crop",
-  },
-];
+import { motion } from "framer-motion";
+import { products } from "./Products";
 
 export function ProductGrid() {
   return (
-    <section className="section">
-      <div className="container-page">
-        <h2 className="text-3xl md:text-4xl font-semibold tracking-tight">
-          For teams that mean business
-        </h2>
-        <p className="mt-3 text-neutral-700 max-w-2xl">
-          Curated Apple hardware for reliable rollouts, easy management, and
-          longer lifecycles.
-        </p>
+    <section className="relative py-28 overflow-hidden">
+      {/* Soft ambient pink-beige wash */}
+      <div className="absolute inset-0 bg-gradient-to-br from-[#fff8f6] via-[#fefafa] to-[#f7efed]" />
 
-        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {products.map((p) => (
-            <article
+      {/* Slowly drifting abstract shape (luxury aesthetic) */}
+      <motion.svg
+        className="absolute -top-32 -left-40 w-[480px] opacity-[0.18] text-[#f0d7d2]"
+        viewBox="0 0 200 200"
+        animate={{ y: ["0%", "4%", "0%"] }}
+        transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+      >
+        <path
+          fill="currentColor"
+          d="M37.8,-59C49.4,-52.2,57.6,-41.4,63.9,-29.8C70.2,-18.2,74.6,-5.9,72.2,5.6C69.8,17.1,60.6,27.9,51.1,38.2C41.7,48.5,31.9,58.4,19.5,63.7C7.1,69.1,-7.8,70,-21.6,65.9C-35.4,61.7,-48,52.5,-57.3,41.2C-66.7,29.9,-73,16.5,-74.2,2.4C-75.4,-11.6,-71.4,-26.3,-62.8,-36.9C-54.2,-47.6,-41,-54.1,-28.2,-59.7C-15.3,-65.3,-7.6,-70.1,3.1,-75.1C13.7,-80.1,27.3,-85.7,37.8,-59Z"
+          transform="translate(100 100)"
+        />
+      </motion.svg>
+
+      <div className="container-page relative z-10">
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          viewport={{ once: true }}
+          className="text-3xl md:text-4xl font-medium tracking-tight text-[#3f2f2d] mb-4"
+        >
+          For your everyday beauty ritual
+        </motion.h2>
+
+        <motion.p
+          initial={{ opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="text-[#5c4a47] max-w-2xl font-normal leading-relaxed"
+        >
+          Essentials crafted to nourish, restore, and elevate your natural glow.
+          Beauty that feels comforting, intentional, and effortless.
+        </motion.p>
+
+        {/* Product Grid (show first 6) */}
+        <div className="mt-16 grid gap-14 sm:grid-cols-2 lg:grid-cols-3 relative">
+          {products.slice(0, 6).map((p) => (
+            <motion.article
               key={p.name}
-              className="group border border-neutral-200 rounded-2xl bg-white overflow-hidden hover:shadow-soft transition"
+              initial={{ opacity: 0, y: 40, scale: 0.94 }}
+              whileInView={{
+                opacity: 1,
+                y: 0,
+                scale: 1,
+                rotate: [0, -0.6, 0.6, 0],
+              }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{
+                duration: 0.75,
+                ease: [0.25, 0.1, 0.25, 1],
+              }}
+              whileHover={{
+                y: -10,
+                scale: 1.02,
+                transition: { duration: 0.35, ease: "easeOut" },
+              }}
+              className="
+        group relative bg-[#fcf9f8] rounded-3xl 
+        border border-[#eadfdb]
+        shadow-[0_4px_18px_rgba(0,0,0,0.05)]
+        overflow-hidden transition-all
+      "
             >
-              <div className="relative">
-                <img
-                  src={p.img}
-                  alt={p.name}
-                  className="h-56 w-full object-cover transition duration-500 group-hover:scale-[1.03]"
+              {/* Ambient card glow */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 0.4, scale: 1 }}
+                viewport={{ once: true, amount: 0.4 }}
+                transition={{ duration: 1.5, ease: "easeOut" }}
+                className="absolute inset-0 bg-gradient-to-br from-white/50 to-white/10 pointer-events-none"
+              />
+
+              {/* Floating blob */}
+              <motion.svg
+                className="absolute -top-12 -right-10 w-[180px] opacity-20 text-[#f3e6e2]"
+                viewBox="0 0 200 200"
+                animate={{ rotate: ["0deg", "6deg", "0deg"] }}
+                transition={{
+                  duration: 10,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+              >
+                <path
+                  fill="currentColor"
+                  d="M39.8,-60.3C52.3,-53.7,62,-43.5,68.5,-31.5C74.9,-19.6,78.1,-5.9,74.4,5.4C70.7,16.7,60,25.4,50.3,35C40.5,44.6,31.7,55,20.2,59C8.6,63,-5.6,60.6,-18.4,55.6C-31.1,50.7,-42.3,43.2,-51.5,33.2C-60.7,23.3,-67.9,11.7,-70.2,-1.3C-72.5,-14.2,-69.8,-28.3,-61.4,-38.4C-53,-48.6,-38.8,-54.7,-25.1,-60.9C-11.4,-67.1,1.8,-73.5,14.8,-73.7C27.9,-74,39.8,-60.3,39.8,-60.3Z"
+                  transform="translate(100 100)"
                 />
-                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-white/0 to-white/0 group-hover:to-white/10 transition" />
-              </div>
-              <div className="p-5">
-                <h3 className="text-lg font-semibold tracking-tight">
+              </motion.svg>
+
+              {/* Image with soft drift */}
+              <motion.img
+                src={p.img}
+                alt={p.name}
+                className="relative z-10 h-64 w-full object-cover transition duration-700 group-hover:scale-[1.06]"
+                animate={{ y: ["0%", "-3%", "0%"] }}
+                transition={{
+                  duration: 6,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+              />
+
+              {/* Text */}
+              <div className="relative z-10 p-7">
+                <h3 className="text-lg font-medium text-[#3f2f2d] tracking-tight">
                   {p.name}
                 </h3>
-                <p className="mt-2 text-sm text-neutral-700">{p.blurb}</p>
-                <div className="mt-4">
-                  <button className="btn btn-outline">Learn more</button>
-                </div>
+
+                <p className="mt-3 text-sm text-[#6a5854] leading-relaxed font-normal">
+                  {p.blurb}
+                </p>
+
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  transition={{ duration: 0.2 }}
+                  className="
+            mt-6 px-6 py-2.5 rounded-full
+            border border-[#cfc5c2]
+            bg-white text-[#3f2f2d]
+            hover:bg-[#f5f2f1] transition
+            font-medium text-sm
+          "
+                >
+                  Learn more
+                </motion.button>
               </div>
-            </article>
+            </motion.article>
           ))}
         </div>
+
+        {/* CTA to full catalogue */}
+        <div className="mt-10 flex justify-center">
+          <a
+            href="/shop"
+            className="inline-flex items-center gap-3 px-8 py-3 rounded-full bg-[#7a4b47] text-[#f9ece9] font-medium shadow-lg hover:bg-[#673d3a] transition"
+            aria-label="View full collection"
+          >
+            View Full Collection
+          </a>
+        </div>
+
+        {/* Promotional banner removed — use CatalogPromo component instead */}
       </div>
     </section>
   );
