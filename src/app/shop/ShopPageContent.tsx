@@ -12,7 +12,7 @@ const PAGE_SIZE = 6;
 
 // Memoized products fetching for performance
 function fetchProducts(page: number, sort: string) {
-  let list = [...productsData];
+  const list = [...productsData];
 
   if (sort === "price-low") {
     list.sort((a, b) => a.price - b.price);

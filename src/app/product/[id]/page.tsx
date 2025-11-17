@@ -1,6 +1,6 @@
 "use client";
 
-import { products } from "@/components/Products";
+import { products, type Product } from "@/components/Products";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
@@ -16,18 +16,16 @@ export default function ProductPage({ params }: { params: { id: string } }) {
   const [qtyInCart, setQtyInCart] = useState(0);
 
   // Find product first
-  const product = products.find((p) => p.id === params.id);
+  const product: Product | undefined = products.find((p) => p.id === params.id);
 
-  // Safe placeholder to prevent undefined access inside hooks
-  const p =
-    product ??
-    ({
-      id: "",
-      name: "",
-      price: 0,
-      img: "",
-      blurb: "",
-    } as any);
+  const p: Product = product ?? {
+    id: "",
+    name: "",
+    price: 0,
+    img: "",
+    blurb: "",
+    link: "",
+  };
 
   useEffect(() => {
     if (!product) return;
@@ -73,13 +71,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
   }
 
   return (
-    <section
-      className="
-        pt-28 pb-32
-        bg-[linear-gradient(to_bottom,#f7efed,#f2e6e1,#efe1dd)]
-        relative
-      "
-    >
+    <section className="pt-28 pb-32 bg-[linear-gradient(to_bottom,#f7efed,#f2e6e1,#efe1dd)] relative">
       <div
         className="
           absolute inset-0 opacity-10
@@ -133,7 +125,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
 
               <p>
                 Our curation emphasizes softness, grounding scents, and
-                comfort-focused formulations. Whether it’s part of your morning
+                comfort-focused formulations. Whether it is part of your morning
                 routine or an evening wind-down moment, it settles into your
                 life like something familiar.
               </p>
@@ -165,11 +157,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
                       src={rec.img}
                       alt={rec.name}
                       fill
-                      className="
-                        object-cover
-                        group-hover:scale-[1.06]
-                        transition-transform
-                      "
+                      className="object-cover group-hover:scale-[1.06] transition-transform"
                     />
                   </div>
 
