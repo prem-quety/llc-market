@@ -4,31 +4,47 @@ import { products } from "@/components/Products";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
+type CartItem = {
+  id: string;
+  name: string;
+  price: number;
+  img: string;
+  qty: number;
+};
+
 export default function ProductPage({ params }: { params: { id: string } }) {
-  const product = products.find((p) => p.id === params.id);
-
-  if (!product) {
-    return (
-      <div className="container-page py-32 text-center text-[#3f2f2d]">
-        Product not found.
-      </div>
-    );
-  }
-
-  const p = product;
-
   const [qtyInCart, setQtyInCart] = useState(0);
 
+  // Find product first
+  const product = products.find((p) => p.id === params.id);
+
+  // Safe placeholder to prevent undefined access inside hooks
+  const p =
+    product ??
+    ({
+      id: "",
+      name: "",
+      price: 0,
+      img: "",
+      blurb: "",
+    } as any);
+
   useEffect(() => {
-    const cart = JSON.parse(localStorage.getItem("cart") || "[]");
-    const existing = cart.find((item: any) => item.id === p.id);
+    if (!product) return;
+    if (typeof window === "undefined") return;
+
+    const raw = localStorage.getItem("cart");
+    const cart: CartItem[] = raw ? JSON.parse(raw) : [];
+
+    const existing = cart.find((item) => item.id === p.id);
     setQtyInCart(existing ? existing.qty : 0);
-  }, [p.id]);
+  }, [product, p.id]);
 
   function addToCart() {
-    const cart = JSON.parse(localStorage.getItem("cart") || "[]");
+    const raw = localStorage.getItem("cart");
+    const cart: CartItem[] = raw ? JSON.parse(raw) : [];
 
-    const existing = cart.find((item: any) => item.id === p.id);
+    const existing = cart.find((item) => item.id === p.id);
 
     if (existing) {
       existing.qty += 1;
@@ -45,6 +61,15 @@ export default function ProductPage({ params }: { params: { id: string } }) {
     }
 
     localStorage.setItem("cart", JSON.stringify(cart));
+  }
+
+  // Now return the "not found" message AFTER hooks, safe for React
+  if (!product) {
+    return (
+      <div className="container-page py-32 text-center text-[#3f2f2d]">
+        Product not found.
+      </div>
+    );
   }
 
   return (

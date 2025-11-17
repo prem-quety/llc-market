@@ -8,10 +8,17 @@ import {
   DialogTitle,
   DialogDescription,
 } from "@/components/ui/dialog";
-import { Router } from "next/router";
 
 export default function CheckoutPage() {
-  const [cart, setCart] = useState<any[]>([]);
+  type CartItem = {
+    id: string;
+    name: string;
+    price: number;
+    qty: number;
+  };
+
+  const [cart, setCart] = useState<CartItem[]>([]);
+
   const [showError, setShowError] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
 
@@ -35,7 +42,9 @@ export default function CheckoutPage() {
   const shipping = subtotal > 50 ? 0 : 9.99;
   const total = subtotal + tax + shipping;
 
-  function handleInput(e: any) {
+  function handleInput(
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) {
     const { name, value } = e.target;
     setCustomer((prev) => ({ ...prev, [name]: value }));
   }

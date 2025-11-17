@@ -4,8 +4,7 @@ import { useState } from "react";
 export default function ContactPage() {
   const [state, setState] = useState<{ ok: boolean; msg: string } | null>(null);
 
-  async function onSubmit(formData: FormData) {
-    // demo-only UX
+  async function onSubmit() {
     await new Promise((r) => setTimeout(r, 600));
     setState({
       ok: true,
@@ -17,6 +16,7 @@ export default function ContactPage() {
     <section className="container-padded py-20">
       <div className="max-w-xl">
         <h1 className="text-4xl font-semibold tracking-tight">Contact</h1>
+
         <p className="mt-4 text-neutral-700">
           Tell us about your business. No spam. No pushy sales. Just competent
           humans.
@@ -38,16 +38,19 @@ export default function ContactPage() {
               required
             />
           </div>
+
           <input
             name="company"
             placeholder="Company"
             className="border rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-brand w-full"
           />
+
           <textarea
             name="message"
             placeholder="What do you need?"
             className="border rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-brand w-full min-h-[140px]"
           />
+
           <button className="btn btn-primary">Send message</button>
         </form>
 

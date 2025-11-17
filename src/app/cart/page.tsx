@@ -1,9 +1,18 @@
 "use client";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import Image from "next/image";
 
 export default function CartPage() {
-  const [cart, setCart] = useState<any[]>([]);
+  type CartItem = {
+    id: string;
+    name: string;
+    price: number;
+    img: string;
+    qty: number;
+  };
+
+  const [cart, setCart] = useState<CartItem[]>([]);
 
   useEffect(() => {
     const stored = JSON.parse(localStorage.getItem("cart") || "[]");
@@ -32,9 +41,9 @@ export default function CartPage() {
   const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
 
   const suggestedProducts = [
-    { id: 4, name: "Meditation Mat", price: 24.99 },
-    { id: 5, name: "Essential Oil Set", price: 39.99 },
-    { id: 6, name: "Incense Bundle", price: 19.99 },
+    { id: "4", name: "Meditation Mat", price: 24.99 },
+    { id: "5", name: "Essential Oil Set", price: 39.99 },
+    { id: "6", name: "Incense Bundle", price: 19.99 },
   ];
 
   return (
@@ -82,9 +91,11 @@ export default function CartPage() {
                     >
                       <div className="flex-shrink-0">
                         <div className="w-24 h-24 rounded-xl bg-gradient-to-br from-[#f9ece9] to-[#f0dcd8] shadow-sm overflow-hidden">
-                          <img
+                          <Image
                             src={item.img}
-                            className="w-full h-full object-cover"
+                            alt={item.name}
+                            fill
+                            className="object-cover"
                           />
                         </div>
                       </div>
@@ -221,11 +232,11 @@ export default function CartPage() {
                 </button>
               </Link>
 
-              <a href="/" className="block">
+              <Link href="/" className="block">
                 <button className="w-full px-7 py-3 rounded-full border border-[#7a4b47] text-[#4a2e2b] bg-[#fdf5f4]/70 hover:bg-[#f9e5e1] transition font-medium">
                   Continue Shopping
                 </button>
-              </a>
+              </Link>
             </div>
           </div>
         </div>

@@ -2,7 +2,6 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { NavBar } from "@/components/NavBar";
-import { Footer } from "@/components/CTASection";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -31,16 +30,17 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        {/* eslint-disable-next-line @next/next/no-page-custom-font */}
         <link
           href="https://fonts.googleapis.com/css2?family=Allura&display=swap"
           rel="stylesheet"
         />
       </head>
+
       <body className={inter.className}>
         <div className="min-h-screen flex flex-col">
           <NavBar />
           <main className="flex-1">{children}</main>
-          {/* <Footer /> */}
         </div>
       </body>
     </html>
