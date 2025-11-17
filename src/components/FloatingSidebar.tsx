@@ -136,7 +136,7 @@ export function FloatingSidebar() {
             30-day returns on all items
           </p>
           <p className="text-xs italic text-[#7a4b47] leading-relaxed mt-3 pt-3 border-t border-[#e8dcd7]">
-            "Find what feels like home."
+            &quot;Find what feels like home.&quot;
           </p>
         </div>
       </div>
