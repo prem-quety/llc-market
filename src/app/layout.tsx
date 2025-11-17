@@ -6,7 +6,7 @@ import { NavBar } from "@/components/NavBar";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "LLC Market — Demo Corporate Storefront",
+  title: "LLC Market — Buy New Cosmetics",
   description:
     "A premium demo storefront for LLCs. Built with Next.js + Tailwind.",
   metadataBase: new URL("https://example.com"),
