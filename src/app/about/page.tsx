@@ -15,13 +15,13 @@ export default function AboutPage() {
           <div className="max-w-4xl mx-auto">
             {/* Header */}
             <h1 className="text-5xl font-light tracking-tight text-[#3f2f2d] animate-textIn">
-              About LLC Market
+              About Idrees Store
             </h1>
             <p className="mt-5 text-lg text-[#6a5854] leading-relaxed max-w-3xl animate-textInSlow">
-              LLC Market was built for founders and operators who prefer clarity
-              over clutter. The experience is designed to feel clean, corporate,
-              and quietly confident, the type of storefront that says “we know
-              what we’re doing” without raising its voice.
+              Idrees Store was built for founders and operators who prefer
+              clarity over clutter. The experience is designed to feel clean,
+              corporate, and quietly confident, the type of storefront that says
+              “we know what we’re doing” without raising its voice.
             </p>
             <p className="mt-4 text-[#6a5854] leading-relaxed max-w-3xl animate-textInSlower">
               The stack stays intentionally simple. Next.js keeps everything

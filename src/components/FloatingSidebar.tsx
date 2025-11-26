@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useState, useCallback, useEffect } from "react";
+import { dynamicCategories, categoryLabels } from "@/components/Products";
 
 const categories = [
   { id: "all", label: "All Products", icon: "🎯" },
@@ -118,9 +119,10 @@ export function FloatingSidebar() {
             onChange={handleCategoryChange}
             className="w-full px-4 py-3 rounded-xl bg-white border-2 border-[#e7d8d4] text-[#3a2f2d] text-sm font-light focus:outline-none focus:border-[#7a4b47] focus:ring-2 focus:ring-[#7a4b47]/20 transition cursor-pointer"
           >
-            {categories.map((cat) => (
-              <option key={cat.id} value={cat.id}>
-                {cat.label}
+            <option value="all">All Products</option>
+            {dynamicCategories.map((cat) => (
+              <option key={cat} value={cat}>
+                {categoryLabels[cat] || cat}
               </option>
             ))}
           </select>

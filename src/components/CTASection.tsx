@@ -69,7 +69,7 @@ export function Footer() {
       </div>
 
       <p className="mt-6 text-[#8a7673] text-xs">
-        © {new Date().getFullYear()} LLC Market. Crafted with intention.
+        © {new Date().getFullYear()} Idrees Store. Crafted with intention.
       </p>
     </footer>
   );

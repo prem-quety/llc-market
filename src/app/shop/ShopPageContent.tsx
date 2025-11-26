@@ -10,9 +10,12 @@ import Image from "next/image";
 
 const PAGE_SIZE = 6;
 
-// Memoized products fetching for performance
-function fetchProducts(page: number, sort: string) {
-  const list = [...productsData];
+function fetchProducts(page: number, sort: string, category: string) {
+  let list = [...productsData];
+
+  if (category !== "all") {
+    list = list.filter((p) => p.category === category);
+  }
 
   if (sort === "price-low") {
     list.sort((a, b) => a.price - b.price);
@@ -35,6 +38,7 @@ export function ShopPageContent() {
 
   const page = Number(params.get("page")) || 1;
   const sort = params.get("sort") || "default";
+  const category = params.get("category") || "all";
 
   const [data, setData] = React.useState<{
     products: typeof productsData;
@@ -44,9 +48,8 @@ export function ShopPageContent() {
 
   // Memoize data to prevent unnecessary recalculations
   const memoizedData = useMemo(() => {
-    const result = fetchProducts(page, sort);
-    return result;
-  }, [page, sort]);
+    return fetchProducts(page, sort, category);
+  }, [page, sort, category]);
 
   React.useEffect(() => {
     setIsLoading(true);
@@ -62,16 +65,16 @@ export function ShopPageContent() {
 
   const changePage = useCallback(
     (p: number) => {
-      router.push(`/shop?page=${p}&sort=${sort}`);
+      router.push(`/shop?page=${p}&sort=${sort}&category=${category}`);
     },
-    [sort, router]
+    [sort, category, router]
   );
 
   const handleSortChange = useCallback(
     (newSort: string) => {
-      router.push(`/shop?page=1&sort=${newSort}`);
+      router.push(`/shop?page=1&sort=${newSort}&category=${category}`);
     },
-    [router]
+    [category, router, sort] // include sort
   );
 
   return (

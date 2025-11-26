@@ -6,18 +6,18 @@ import { NavBar } from "@/components/NavBar";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "LLC Market — Buy New Cosmetics",
+  title: "Idrees Store — Buy New Cosmetics",
   description:
     "A premium demo storefront for LLCs. Built with Next.js + Tailwind.",
   metadataBase: new URL("https://example.com"),
   openGraph: {
-    title: "LLC Market",
+    title: "Idrees Store",
     description: "A premium demo storefront for LLCs.",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "LLC Market",
+    title: "Idrees Store",
     description: "A premium demo storefront for LLCs.",
   },
 };
