@@ -5,72 +5,164 @@ import { motion } from "framer-motion";
 
 export function Footer() {
   return (
-    <footer className="relative pt-40 pb-20 text-center">
-      {/* CTA inside footer */}
-      <section className="mb-24">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="text-4xl md:text-5xl font-semibold text-[#3c2f2d] leading-tight"
-        >
-          Let your ritual begin.
-        </motion.h2>
+    <footer className="relative bg-[#faf8f6] pt-24 pb-12 border-t border-[#e6d9d5]">
+      <div className="container-page">
+        {/* Main Footer Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 mb-20">
+          {/* Brand Column */}
+          <div className="space-y-6">
+            <Link
+              href="/"
+              className="font-serif text-3xl text-[#2f2423] tracking-tighter"
+            >
+              Idrees Store
+            </Link>
+            <p className="text-[#6a5854] leading-relaxed text-sm">
+              Curating daily rituals with intention and quiet luxury. Every
+              piece is chosen to elevate your sanctuary.
+            </p>
+            <div className="flex gap-4">
+              {/* Mock Social Icons */}
+              {["IG", "FB", "YT", "PIN"].map((social) => (
+                <div
+                  key={social}
+                  className="w-8 h-8 rounded-full border border-[#d8c4c0] flex items-center justify-center text-[10px] text-[#7a4b47] cursor-pointer hover:bg-[#7a4b47] hover:text-white transition-colors"
+                >
+                  {social}
+                </div>
+              ))}
+            </div>
+          </div>
 
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.9, ease: "easeOut", delay: 0.2 }}
-          className="mt-4 max-w-xl mx-auto text-lg text-[#5d4e4a] leading-relaxed"
-        >
-          A moment crafted for you, intentional and softly luxurious. Step into
-          a routine that feels like clarity.
-        </motion.p>
+          {/* Shop Links */}
+          <div>
+            <h4 className="font-bold text-[#2f2423] mb-6 uppercase text-xs tracking-widest">
+              Shop
+            </h4>
+            <ul className="space-y-4 text-sm text-[#6a5854]">
+              <li>
+                <Link
+                  href="/shop"
+                  className="hover:text-[#7a4b47] transition-colors"
+                >
+                  All Products
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/shop?category=cosmetics"
+                  className="hover:text-[#7a4b47] transition-colors"
+                >
+                  Cosmetics
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/shop?category=home-decor"
+                  className="hover:text-[#7a4b47] transition-colors"
+                >
+                  Home Decor
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/shop?category=aesthetic"
+                  className="hover:text-[#7a4b47] transition-colors"
+                >
+                  Aesthetic Sets
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/shop"
+                  className="hover:text-[#7a4b47] transition-colors"
+                >
+                  Gift Cards
+                </Link>
+              </li>
+            </ul>
+          </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 25 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.9, ease: "easeOut", delay: 0.35 }}
-          className="mt-10"
-        >
-          <Link
-            href="/contact"
-            className="
-              px-10 py-4 rounded-full
-              bg-[#7a4b47] text-[#f9ece9]
-              text-lg font-medium
-              shadow-md shadow-[#7a4b47]/40
-              hover:bg-[#6a3f3b]
-              transition
-            "
-          >
-            Begin your ritual
-          </Link>
-        </motion.div>
-      </section>
+          {/* Support Links */}
+          <div>
+            <h4 className="font-bold text-[#2f2423] mb-6 uppercase text-xs tracking-widest">
+              Support
+            </h4>
+            <ul className="space-y-4 text-sm text-[#6a5854]">
+              <li>
+                <Link
+                  href="#"
+                  className="hover:text-[#7a4b47] transition-colors"
+                >
+                  Shipping & Returns
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="#"
+                  className="hover:text-[#7a4b47] transition-colors"
+                >
+                  FAQ
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="#"
+                  className="hover:text-[#7a4b47] transition-colors"
+                >
+                  Contact Us
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="#"
+                  className="hover:text-[#7a4b47] transition-colors"
+                >
+                  Privacy Policy
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="#"
+                  className="hover:text-[#7a4b47] transition-colors"
+                >
+                  Terms of Service
+                </Link>
+              </li>
+            </ul>
+          </div>
 
-      {/* Divider line */}
-      <div className="w-full h-px bg-[#d9c6c2]/60 mb-10" />
+          {/* Newsletter */}
+          <div>
+            <h4 className="font-bold text-[#2f2423] mb-6 uppercase text-xs tracking-widest">
+              Stay Connected
+            </h4>
+            <p className="text-[#6a5854] text-sm mb-4">
+              Join our newsletter for exclusive drops and guided rituals.
+            </p>
+            <form className="flex flex-col gap-3">
+              <input
+                type="email"
+                placeholder="Your email address"
+                className="w-full px-4 py-3 rounded-lg bg-white border border-[#e6d9d5] text-[#3f2f2d] focus:outline-none focus:border-[#7a4b47] text-sm"
+              />
+              <button className="w-full py-3 bg-[#2f2423] text-white rounded-lg text-sm font-bold uppercase tracking-wide hover:bg-[#4a3b39] transition-colors shadow-lg">
+                Subscribe
+              </button>
+            </form>
+          </div>
+        </div>
 
-      {/* Footer bottom nav */}
-      <div className="text-[#6b5a57] text-sm flex flex-col md:flex-row items-center justify-center gap-6">
-        <Link href="/about" className="hover:text-[#3c2f2d] transition">
-          About
-        </Link>
-        <Link href="/contact" className="hover:text-[#3c2f2d] transition">
-          Contact
-        </Link>
-        <Link href="/shop" className="hover:text-[#3c2f2d] transition">
-          View our Shop
-        </Link>
+        {/* Bottom Bar */}
+        <div className="pt-8 border-t border-[#e6d9d5] flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="text-[#8a7673] text-xs">
+            © {new Date().getFullYear()} Idrees Store. All rights reserved.
+          </p>
+          <div className="flex gap-6 text-[#8a7673] text-xs uppercase tracking-wide">
+            <span>Made with care</span>
+          </div>
+        </div>
       </div>
-
-      <p className="mt-6 text-[#8a7673] text-xs">
-        © {new Date().getFullYear()} Idrees Store. Crafted with intention.
-      </p>
     </footer>
   );
 }

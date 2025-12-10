@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export function AuraShowcase() {
   return (
-    <section className="relative py-44 overflow-hidden">
+    <section className="relative py-24 md:py-44 overflow-hidden">
       {/* Background wash */}
       <div className="absolute inset-0 bg-gradient-to-b from-[#f7e6e3] via-[#fff9f7] to-[#f3e7e4]" />
 
@@ -29,26 +29,25 @@ export function AuraShowcase() {
             src="/assets/images/perfume.png"
             alt="Featured Product"
             fill
-            sizes="(max-width: 640px) 80vw, (max-width: 1024px) 55vw, 40vw"
-            className="object-contain"
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 55vw, 40vw"
+            className="object-contain opacity-40 md:opacity-100"
           />
         </div>
       </div>
 
       {/* TEXT CONTENT */}
       <div className="container-page relative z-20 max-w-xl">
-        {/* Mobile readability gradient */}
-        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-[#00000030] md:bg-none pointer-events-none z-0" />
+        {/* Mobile readability gradient - Removed as we are switching to dark text */}
 
-        <h2 className="relative z-10 text-5xl md:text-6xl lg:text-7xl font-light leading-[1.1] text-white md:text-[#3f2f2d]">
+        <h2 className="relative z-10 text-4xl md:text-6xl lg:text-7xl font-light leading-[1.1] text-[#3f2f2d]">
           A singular moment of
-          <span className="text-[#ecd8d5] md:text-[#8b5f5a]">
+          <span className="text-[#8b5f5a] block md:inline">
             {" "}
             pure radiance.
           </span>
         </h2>
 
-        <p className="relative z-10 mt-7 text-xl leading-relaxed font-normal max-w-xl text-[#f8f6f6] md:text-[#5b4744]">
+        <p className="relative z-10 mt-6 text-lg md:text-xl leading-relaxed font-normal max-w-md md:max-w-xl text-[#5b4744]">
           Meet the centerpiece of your ritual, crafted to elevate your glow with
           a touch of softness and an air of luxury. Let your skin indulge in the
           refinement it deserves.

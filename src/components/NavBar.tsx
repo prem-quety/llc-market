@@ -34,7 +34,7 @@ export function NavBar() {
             href="/"
             className="text-xl md:text-3xl font-light tracking-tight text-[#2f2423] hover:text-[#7a4b47] transition"
           >
-            Idrees<span className="text-[#7a4b47]">Store</span>
+            Idrees<span className="text-[#7a4b47]"> Store</span>
           </Link>
         </motion.div>
 

@@ -4,8 +4,10 @@ export type Product = {
   blurb: string;
   img: string;
   price: number;
-  link: string; // added
+  link: string;
   category: "cosmetics" | "home-decor" | "water-bottles" | "aesthetic";
+  rating: number;
+  reviews: number;
 };
 
 export const products: Product[] = [
@@ -18,6 +20,8 @@ export const products: Product[] = [
     price: 18,
     link: "/product/1",
     category: "cosmetics",
+    rating: 4.5,
+    reviews: 12,
   },
   {
     id: "2",
@@ -28,6 +32,8 @@ export const products: Product[] = [
     price: 28,
     link: "/product/2",
     category: "cosmetics",
+    rating: 4.8,
+    reviews: 30,
   },
   {
     id: "3",
@@ -38,6 +44,8 @@ export const products: Product[] = [
     price: 22,
     link: "/product/3",
     category: "cosmetics",
+    rating: 3.9,
+    reviews: 8,
   },
   {
     id: "4",
@@ -48,6 +56,8 @@ export const products: Product[] = [
     price: 14,
     link: "/product/4",
     category: "cosmetics",
+    rating: 4.2,
+    reviews: 22,
   },
 
   {
@@ -59,6 +69,8 @@ export const products: Product[] = [
     price: 24,
     link: "/product/6",
     category: "home-decor",
+    rating: 4.7,
+    reviews: 15,
   },
 
   {
@@ -70,6 +82,8 @@ export const products: Product[] = [
     price: 19,
     link: "/product/7",
     category: "cosmetics",
+    rating: 5.0,
+    reviews: 5,
   },
   {
     id: "8",
@@ -80,6 +94,8 @@ export const products: Product[] = [
     price: 9,
     link: "/product/8",
     category: "cosmetics",
+    rating: 3.5,
+    reviews: 40,
   },
 
   {
@@ -91,6 +107,8 @@ export const products: Product[] = [
     price: 21,
     link: "/product/9",
     category: "cosmetics",
+    rating: 4.6,
+    reviews: 28,
   },
   {
     id: "10",
@@ -101,6 +119,8 @@ export const products: Product[] = [
     price: 17,
     link: "/product/10",
     category: "cosmetics",
+    rating: 4.1,
+    reviews: 10,
   },
   {
     id: "11",
@@ -111,6 +131,8 @@ export const products: Product[] = [
     price: 20,
     link: "/product/11",
     category: "cosmetics",
+    rating: 4.9,
+    reviews: 35,
   },
   {
     id: "12",
@@ -121,6 +143,8 @@ export const products: Product[] = [
     price: 26,
     link: "/product/12",
     category: "cosmetics",
+    rating: 4.3,
+    reviews: 18,
   },
   {
     id: "13",
@@ -131,6 +155,8 @@ export const products: Product[] = [
     price: 45,
     link: "/product/13",
     category: "home-decor",
+    rating: 4.8,
+    reviews: 9,
   },
   {
     id: "14",
@@ -141,6 +167,8 @@ export const products: Product[] = [
     price: 32,
     link: "/product/14",
     category: "home-decor",
+    rating: 3.8,
+    reviews: 14,
   },
   {
     id: "15",
@@ -151,6 +179,8 @@ export const products: Product[] = [
     price: 38,
     link: "/product/15",
     category: "home-decor",
+    rating: 4.4,
+    reviews: 25,
   },
   {
     id: "16",
@@ -161,6 +191,8 @@ export const products: Product[] = [
     price: 35,
     link: "/product/16",
     category: "water-bottles",
+    rating: 4.7,
+    reviews: 32,
   },
   {
     id: "17",
@@ -171,6 +203,8 @@ export const products: Product[] = [
     price: 28,
     link: "/product/17",
     category: "water-bottles",
+    rating: 4.0,
+    reviews: 6,
   },
   {
     id: "18",
@@ -181,6 +215,8 @@ export const products: Product[] = [
     price: 24,
     link: "/product/18",
     category: "water-bottles",
+    rating: 4.5,
+    reviews: 20,
   },
   {
     id: "19",
@@ -191,6 +227,8 @@ export const products: Product[] = [
     price: 42,
     link: "/product/19",
     category: "aesthetic",
+    rating: 4.9,
+    reviews: 11,
   },
   {
     id: "20",
@@ -201,6 +239,8 @@ export const products: Product[] = [
     price: 29,
     link: "/product/20",
     category: "aesthetic",
+    rating: 3.7,
+    reviews: 7,
   },
   {
     id: "21",
@@ -211,6 +251,8 @@ export const products: Product[] = [
     price: 33,
     link: "/product/21",
     category: "aesthetic",
+    rating: 4.6,
+    reviews: 38,
   },
   {
     id: "22",
@@ -221,6 +263,8 @@ export const products: Product[] = [
     price: 31,
     link: "/product/22",
     category: "aesthetic",
+    rating: 4.2,
+    reviews: 16,
   },
   {
     id: "23",
@@ -231,6 +275,8 @@ export const products: Product[] = [
     price: 16,
     link: "/product/23",
     category: "cosmetics",
+    rating: 4.8,
+    reviews: 29,
   },
   {
     id: "24",
@@ -241,6 +287,116 @@ export const products: Product[] = [
     price: 19,
     link: "/product/24",
     category: "cosmetics",
+    rating: 4.3,
+    reviews: 13,
+  },
+  {
+    id: "25",
+    name: "Velvet Matte Lipstick Set",
+    blurb:
+      "A trio of deep reds and soft nudes with a finish that feels like cashmere.",
+    img: "/assets/images/lipstick.png",
+    price: 24,
+    link: "/product/25",
+    category: "cosmetics",
+    rating: 4.5,
+    reviews: 21,
+  },
+  {
+    id: "26",
+    name: "Golden Hour Shimmer Oil",
+    blurb:
+      "Infused with real gold flakes for a sun-kissed glow that lasts all day.",
+    img: "/assets/images/shimmer-oil.png",
+    price: 26,
+    link: "/product/26",
+    category: "cosmetics",
+    rating: 4.1,
+    reviews: 39,
+  },
+  {
+    id: "27",
+    name: "Abstract Geometric Art Print",
+    blurb:
+      "Modern lines meets soft pastels. A conversation starter for your gallery wall.",
+    img: "/assets/images/art-print.png",
+    price: 35,
+    link: "/product/27",
+    category: "aesthetic",
+    rating: 4.7,
+    reviews: 8,
+  },
+  {
+    id: "28",
+    name: "Terra Cotta Succulent Pot",
+    blurb:
+      "Hand-thrown clay with a raw, earthy texture. The perfect home for your green friends.",
+    img: "/assets/images/succulent.png",
+    price: 18,
+    link: "/product/28",
+    category: "home-decor",
+    rating: 3.6,
+    reviews: 19,
+  },
+  {
+    id: "29",
+    name: "Luxe Silk Pillowcase",
+    blurb:
+      "Wake up with smoother hair and skin. Champagne gold mulberry silk that feels like pure luxury.",
+    img: "/assets/images/silk-pillowcase.png",
+    price: 45,
+    link: "/product/29",
+    category: "aesthetic",
+    rating: 4.9,
+    reviews: 31,
+  },
+  {
+    id: "30",
+    name: "Crystal Infusion Water Bottle",
+    blurb:
+      "Charge your water with positive energy. Rose quartz infusion point in a sleek glass design.",
+    img: "/assets/images/crystal-bottle.png",
+    price: 38,
+    link: "/product/30",
+    category: "water-bottles",
+    rating: 4.4,
+    reviews: 24,
+  },
+  {
+    id: "31",
+    name: "Signature Gold Perfume",
+    blurb:
+      "A rich, long-lasting fragrance with notes of amber and vanilla. Pure luxury in a bottle.",
+    img: "/assets/images/perfume.png",
+    price: 85,
+    link: "/product/31",
+    category: "cosmetics",
+    rating: 4.8,
+    reviews: 15,
+  },
+  {
+    id: "32",
+    name: "Matte Steel Bottle",
+    blurb:
+      "Industrial strength hydration with a soft-touch finish. Keeps water cold for 12 hours.",
+    img: "/assets/images/bottle.jpg",
+    price: 40,
+    link: "/product/32",
+    category: "water-bottles",
+    rating: 4.2,
+    reviews: 27,
+  },
+  {
+    id: "33",
+    name: "French Lavender Bundle",
+    blurb:
+      "Real dried lavender from Provence. Adds a calming scent and rustic charm to any room.",
+    img: "/assets/images/lavendar.jpg",
+    price: 22,
+    link: "/product/33",
+    category: "home-decor",
+    rating: 4.5,
+    reviews: 10,
   },
 ];
 export const dynamicCategories = Array.from(

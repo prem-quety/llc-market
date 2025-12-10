@@ -2,7 +2,6 @@
 
 @plugin "tailwindcss-animate";
 
-
 @custom-variant dark (&:is(.dark *));
 
 /* Light-only, Apple-ish neutrals */
@@ -46,7 +45,8 @@
   --radius-xl: calc(var(--radius) + 4px);
 }
 
-html, body {
+html,
+body {
   height: 100%;
 }
 
@@ -81,52 +81,139 @@ body {
 }
 
 @keyframes bottleFloat {
-  0% { transform: translateY(0); }
-  50% { transform: translateY(-12px); }
-  100% { transform: translateY(0); }
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }
 
 @keyframes slowFloat {
-  0% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-10px) rotate(1deg); }
-  100% { transform: translateY(0) rotate(0deg); }
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(1deg);
+  }
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
 }
 
 @keyframes softPulse {
-  0% { opacity: .65; transform: scale(1); }
-  50% { opacity: .85; transform: scale(1.05); }
-  100% { opacity: .65; transform: scale(1); }
+  0% {
+    opacity: 0.65;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 0.65;
+    transform: scale(1);
+  }
 }
 
 @keyframes textIn {
-  0% { opacity: 0; transform: translateY(12px); }
-  100% { opacity: 1; transform: translateY(0); }
+  0% {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes textInSlow {
-  0% { opacity: 0; transform: translateY(16px); }
-  100% { opacity: 1; transform: translateY(0); }
+  0% {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes textInSlower {
-  0% { opacity: 0; transform: translateY(20px); }
-  100% { opacity: 1; transform: translateY(0); }
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.animate-bottleFloat { animation: bottleFloat 6s ease-in-out infinite; }
-.animate-slowFloat { animation: slowFloat 12s ease-in-out infinite; }
-.animate-softPulse { animation: softPulse 5s ease-in-out infinite; }
-.animate-textIn { animation: textIn .9s ease-out forwards; }
-.animate-textInSlow { animation: textInSlow 1.2s ease-out forwards; }
-.animate-textInSlower { animation: textInSlower 1.5s ease-out forwards; }
+.animate-bottleFloat {
+  animation: bottleFloat 6s ease-in-out infinite;
+}
+.animate-slowFloat {
+  animation: slowFloat 12s ease-in-out infinite;
+}
+.animate-softPulse {
+  animation: softPulse 5s ease-in-out infinite;
+}
+.animate-textIn {
+  animation: textIn 0.9s ease-out forwards;
+}
+.animate-textInSlow {
+  animation: textInSlow 1.2s ease-out forwards;
+}
+.animate-textInSlower {
+  animation: textInSlower 1.5s ease-out forwards;
+}
 
 @layer utilities {
-  .animate-bottleFloat { animation: bottleFloat 6s ease-in-out infinite; }
-  .animate-slowFloat { animation: slowFloat 12s ease-in-out infinite; }
-  .animate-softPulse { animation: softPulse 5s ease-in-out infinite; }
-  .animate-textIn { animation: textIn .9s ease-out forwards; }
-  .animate-textInSlow { animation: textInSlow 1.2s ease-out forwards; }
-  .animate-textInSlower { animation: textInSlower 1.5s ease-out forwards; }
+  .animate-bottleFloat {
+    animation: bottleFloat 6s ease-in-out infinite;
+  }
+  .animate-slowFloat {
+    animation: slowFloat 12s ease-in-out infinite;
+  }
+  .animate-softPulse {
+    animation: softPulse 5s ease-in-out infinite;
+  }
+  .animate-textIn {
+    animation: textIn 0.9s ease-out forwards;
+  }
+  .animate-textInSlow {
+    animation: textInSlow 1.2s ease-out forwards;
+  }
+  .animate-textInSlower {
+    animation: textInSlower 1.5s ease-out forwards;
+  }
+  .animate-marquee {
+    animation: marquee 25s linear infinite;
+  }
+  .animate-marquee2 {
+    animation: marquee2 25s linear infinite;
+  }
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes marquee2 {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
 }
 
 :root {

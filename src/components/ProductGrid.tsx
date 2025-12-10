@@ -1,99 +1,127 @@
+"use client";
+
+import { useKeenSlider } from "keen-slider/react";
+import "keen-slider/keen-slider.min.css";
 import Image from "next/image";
+import { useState } from "react";
+import { Autoplay } from "./AutoSlider";
 import { products } from "./Products";
 
-export function ProductGrid() {
+export default function ProductGrid() {
+  const [current, setCurrent] = useState(0);
+
+  const [sliderRef, slider] = useKeenSlider<HTMLDivElement>({
+    loop: true,
+    slides: { perView: 4.5, spacing: 24 },
+    breakpoints: {
+      "(max-width: 1280px)": { slides: { perView: 4, spacing: 20 } },
+      "(max-width: 1024px)": { slides: { perView: 3, spacing: 18 } },
+      "(max-width: 768px)": { slides: { perView: 2.4, spacing: 16 } },
+      "(max-width: 640px)": { slides: { perView: 1.6, spacing: 14 } },
+    },
+    created(sl) {
+      Autoplay(sl, 1200);
+    },
+    slideChanged(sl) {
+      setCurrent(sl.track.details.rel);
+    },
+  });
+
   return (
-    <section className="relative py-28 overflow-hidden">
-      {/* Soft ambient pink-beige wash */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#fff8f6] via-[#fefafa] to-[#f7efed]" />
+    <section className="w-full bg-gradient-to-br from-[#fdf6f5] via-[#fffefe] to-[#f5ebe9] py-20 border-y border-[#f0e6e4]/60">
+      <div className="container-page">
+        <div className="flex items-center justify-between mb-10 gap-4">
+          <div className="flex flex-col gap-1">
+            <span className="text-xs font-bold tracking-[0.2em] text-[#a37f79] uppercase">
+              Fresh Arrivals
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-serif text-[#4a3a37]">
+              Walkeaze Collection
+            </h2>
+          </div>
 
-      <div className="container-page relative z-10">
-        <h2 className="text-3xl md:text-4xl font-medium tracking-tight text-[#3f2f2d] mb-4">
-          For your everyday beauty ritual
-        </h2>
-
-        <p className="text-[#5c4a47] max-w-2xl font-normal leading-relaxed">
-          Essentials crafted to nourish, restore, and elevate your natural glow.
-          Beauty that feels comforting, intentional, and effortless.
-        </p>
-
-        {/* Product Grid (show first 6) - server-rendered, minimal client JS */}
-        <div className="mt-16 grid gap-14 sm:grid-cols-2 lg:grid-cols-3 relative">
-          {products.slice(0, 6).map((p) => (
-            <article
-              key={p.name}
-              className="group relative bg-[#fcf9f8] rounded-3xl border border-[#eadfdb] shadow-[0_4px_18px_rgba(0,0,0,0.05)] overflow-hidden transition-all"
-            >
-              {/* Subtle static ambient card overlay */}
-              <div className="absolute inset-0 bg-gradient-to-br from-white/50 to-white/10 pointer-events-none" />
-
-              {/* Decorative blob (static - reduced motion cost) */}
-              <svg
-                className="absolute -top-12 -right-10 w-[180px] opacity-20 text-[#f3e6e2] pointer-events-none"
-                viewBox="0 0 200 200"
-              >
-                <path
-                  fill="currentColor"
-                  d="M39.8,-60.3C52.3,-53.7,62,-43.5,68.5,-31.5C74.9,-19.6,78.1,-5.9,74.4,5.4C70.7,16.7,60,25.4,50.3,35C40.5,44.6,31.7,55,20.2,59C8.6,63,-5.6,60.6,-18.4,55.6C-31.1,50.7,-42.3,43.2,-51.5,33.2C-60.7,23.3,-67.9,11.7,-70.2,-1.3C-72.5,-14.2,-69.8,-28.3,-61.4,-38.4C-53,-48.6,-38.8,-54.7,-25.1,-60.9C-11.4,-67.1,1.8,-73.5,14.8,-73.7C27.9,-74,39.8,-60.3,39.8,-60.3Z"
-                  transform="translate(100 100)"
-                />
-              </svg>
-
-              {/* Image - lazy loaded; use next/image for local assets */}
-              <div className="relative z-10 h-64 w-full overflow-hidden">
-                {p.img.startsWith("http") ? (
-                  <Image
-                    src={p.img}
-                    alt={p.name}
-                    width={400}
-                    height={400}
-                    className="h-64 w-full object-cover transition duration-700 group-hover:scale-[1.06]"
-                    sizes="(max-width: 1024px) 100vw, 33vw"
-                    priority={false}
-                  />
-                ) : (
-                  <Image
-                    src={p.img}
-                    alt={p.name}
-                    width={1200}
-                    height={800}
-                    className="h-64 w-full object-cover block transition duration-700 group-hover:scale-[1.06]"
-                    sizes="(max-width: 1024px) 100vw, 33vw"
-                    priority={false}
-                  />
-                )}
-              </div>
-
-              {/* Text */}
-              <div className="relative z-10 p-7">
-                <h3 className="text-lg font-medium text-[#3f2f2d] tracking-tight">
-                  {p.name}
-                </h3>
-
-                <p className="mt-3 text-sm text-[#6a5854] leading-relaxed font-normal">
-                  {p.blurb}
-                </p>
-
-                <a
-                  href={p.link}
-                  className="mt-6 inline-block px-6 py-2.5 rounded-full border border-[#cfc5c2] bg-white text-[#3f2f2d] hover:bg-[#f5f2f1] transition font-medium text-sm"
-                >
-                  Learn more
-                </a>
-              </div>
-            </article>
-          ))}
-        </div>
-
-        {/* CTA to full catalogue */}
-        <div className="mt-10 flex justify-center">
           <a
             href="/shop"
-            className="inline-flex items-center gap-3 px-8 py-3 rounded-full bg-[#7a4b47] text-[#f9ece9] font-medium shadow-lg hover:bg-[#673d3a] transition"
-            aria-label="View full collection"
+            className="shrink-0 group px-7 py-3 rounded-full bg-[#2f2423] text-[#fef7f4] text-sm font-medium tracking-wide
+            shadow-lg hover:bg-[#4a3a38] hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 flex items-center gap-2"
           >
-            View Full Collection
+            <span>View All</span>
+            <span className="group-hover:translate-x-1 transition-transform">
+              →
+            </span>
           </a>
+        </div>
+
+        <div className="relative overflow-hidden rounded-2xl">
+          {/* soft edge fades so ends feel elegant */}
+          <div className="pointer-events-none absolute left-0 top-0 h-full w-10 sm:w-14 bg-gradient-to-r from-[#fdf6f5] to-transparent z-10" />
+          <div className="pointer-events-none absolute right-0 top-0 h-full w-10 sm:w-14 bg-gradient-to-l from-[#fdf6f5] to-transparent z-10" />
+
+          <div ref={sliderRef} className="keen-slider">
+            {products.map((p, idx) => {
+              const isActive = idx === current;
+              return (
+                <div
+                  key={p.id}
+                  className={[
+                    "keen-slider__slide group rounded-3xl overflow-hidden bg-white border border-[#f2e8e6]",
+                    "transition-all duration-500 ease-[cubic-bezier(0.25,0.4,0.25,1)]",
+                    "shadow-[0_4px_20px_rgba(0,0,0,0.02)]",
+                    "hover:shadow-[0_20px_40px_rgba(122,75,71,0.12)] hover:-translate-y-1",
+                  ].join(" ")}
+                >
+                  <div className="relative h-56 w-full overflow-hidden">
+                    <Image
+                      src={p.img}
+                      alt={p.name}
+                      fill
+                      sizes="(max-width: 640px) 70vw, (max-width: 768px) 45vw, (max-width: 1280px) 33vw, 25vw"
+                      className="object-cover transition-transform duration-500 group-hover:scale-[1.06]"
+                    />
+
+                    {/* hover actions, very light */}
+                    <div className="absolute bottom-3 left-3 flex gap-2 opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all">
+                      <button className="h-8 w-8 rounded-full bg-white/90 backdrop-blur flex items-center justify-center text-xs text-[#7a4b47] shadow-sm hover:bg-[#f4ece9]">
+                        🛒
+                      </button>
+                      <button className="h-8 w-8 rounded-full bg-white/90 backdrop-blur flex items-center justify-center text-xs text-[#c5484f] shadow-sm hover:bg-[#f4ece9]">
+                        ❤
+                      </button>
+                    </div>
+                  </div>
+
+                  <div className="p-4 sm:p-5">
+                    <p className="text-[14px] sm:text-[15px] font-semibold text-[#40302e] leading-snug line-clamp-2">
+                      {p.name}
+                    </p>
+                    <p className="mt-2 text-[15px] sm:text-[16px] font-medium text-[#8c6b65]">
+                      ${p.price.toLocaleString()}
+                    </p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          <button
+            onClick={() => slider.current?.prev()}
+            className="absolute left-4 top-1/2 -translate-y-1/2
+            bg-white/80 backdrop-blur-md border border-white/50 rounded-full
+            shadow-sm w-11 h-11 flex items-center justify-center text-[#5e4b48]
+            hover:bg-white hover:scale-110 hover:shadow-lg transition-all duration-300 z-10"
+          >
+            ←
+          </button>
+
+          <button
+            onClick={() => slider.current?.next()}
+            className="absolute right-4 top-1/2 -translate-y-1/2
+            bg-white/80 backdrop-blur-md border border-white/50 rounded-full
+            shadow-sm w-11 h-11 flex items-center justify-center text-[#5e4b48]
+            hover:bg-white hover:scale-110 hover:shadow-lg transition-all duration-300 z-10"
+          >
+            →
+          </button>
         </div>
       </div>
     </section>

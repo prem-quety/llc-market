@@ -8,7 +8,7 @@ import { FloatingSidebar } from "@/components/FloatingSidebar";
 import Link from "next/link";
 import Image from "next/image";
 
-const PAGE_SIZE = 6;
+const PAGE_SIZE = 12;
 
 function fetchProducts(page: number, sort: string, category: string) {
   let list = [...productsData];
@@ -78,7 +78,7 @@ export function ShopPageContent() {
   );
 
   return (
-    <section className="relative bg-gradient-to-b from-[#faf8f6] via-[#f8f4f1] to-[#f3ebe8] overflow-hidden">
+    <section className="relative bg-gradient-to-b from-[#fffbfb] via-[#fdf4f2] to-[#f7e8e6] overflow-hidden">
       <FloatingSidebar />
 
       {/* Premium vignette - enhanced */}
@@ -93,9 +93,9 @@ export function ShopPageContent() {
         }}
       />
 
-      {/* Premium decorative blob elements */}
-      <div className="pointer-events-none absolute -top-40 right-0 w-[500px] h-[500px] bg-gradient-to-br from-[#f9ece9] to-[#f5dcd5] rounded-full blur-3xl opacity-25" />
-      <div className="pointer-events-none absolute bottom-0 -left-32 w-[400px] h-[400px] bg-gradient-to-tr from-[#e8d4cc] to-[#f0dcd8] rounded-full blur-3xl opacity-20" />
+      {/* Premium decorative blob elements - enriched */}
+      <div className="pointer-events-none absolute -top-40 right-0 w-[500px] h-[500px] bg-gradient-to-br from-[#fcded6] to-[#f0c4bb] rounded-full blur-3xl opacity-30" />
+      <div className="pointer-events-none absolute bottom-0 -left-32 w-[400px] h-[400px] bg-gradient-to-tr from-[#e8cfc8] to-[#e6bab4] rounded-full blur-3xl opacity-25" />
 
       {/* Hero Section - Enhanced */}
       <div
@@ -186,8 +186,8 @@ export function ShopPageContent() {
               onClick={() => handleSortChange("default")}
               className={`px-6 py-2.5 rounded-full text-sm font-light transition duration-300 ${
                 sort === "default"
-                  ? "bg-gradient-to-r from-[#7a4b47] to-[#6a3f3b] text-white shadow-lg shadow-[#7a4b47]/40"
-                  : "bg-white text-[#3f2f2d] border border-[#e6d9d5] hover:border-[#d8c4c0] hover:shadow-md"
+                  ? "bg-gradient-to-r from-[#c08079] to-[#a35d55] text-white shadow-lg shadow-[#c08079]/40"
+                  : "bg-white text-[#3f2f2d] border border-[#f0e6e4] hover:border-[#dcbdb9] hover:shadow-md"
               }`}
             >
               Featured
@@ -197,8 +197,8 @@ export function ShopPageContent() {
               onClick={() => handleSortChange("price-low")}
               className={`px-6 py-2.5 rounded-full text-sm font-light transition duration-300 ${
                 sort === "price-low"
-                  ? "bg-gradient-to-r from-[#7a4b47] to-[#6a3f3b] text-white shadow-lg shadow-[#7a4b47]/40"
-                  : "bg-white text-[#3f2f2d] border border-[#e6d9d5] hover:border-[#d8c4c0] hover:shadow-md"
+                  ? "bg-gradient-to-r from-[#c08079] to-[#a35d55] text-white shadow-lg shadow-[#c08079]/40"
+                  : "bg-white text-[#3f2f2d] border border-[#f0e6e4] hover:border-[#dcbdb9] hover:shadow-md"
               }`}
             >
               Price: Low → High
@@ -208,8 +208,8 @@ export function ShopPageContent() {
               onClick={() => handleSortChange("price-high")}
               className={`px-6 py-2.5 rounded-full text-sm font-light transition duration-300 ${
                 sort === "price-high"
-                  ? "bg-gradient-to-r from-[#7a4b47] to-[#6a3f3b] text-white shadow-lg shadow-[#7a4b47]/40"
-                  : "bg-white text-[#3f2f2d] border border-[#e6d9d5] hover:border-[#d8c4c0] hover:shadow-md"
+                  ? "bg-gradient-to-r from-[#c08079] to-[#a35d55] text-white shadow-lg shadow-[#c08079]/40"
+                  : "bg-white text-[#3f2f2d] border border-[#f0e6e4] hover:border-[#dcbdb9] hover:shadow-md"
               }`}
             >
               Price: High → Low
@@ -219,84 +219,139 @@ export function ShopPageContent() {
 
         {/* Product Grid */}
         {isLoading ? (
-          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {Array.from({ length: PAGE_SIZE }).map((_, i) => (
               <div
                 key={i}
-                className="rounded-[38px] overflow-hidden bg-white shadow-lg border border-[#e6d9d5] animate-pulse"
+                className="rounded-[24px] overflow-hidden bg-white shadow-sm border border-[#e6d9d5] animate-pulse"
               >
-                <div className="w-full h-80 bg-neutral-200" />
-                <div className="p-9 space-y-4">
-                  <div className="h-6 bg-neutral-200 rounded-full w-3/4" />
-                  <div className="h-4 bg-neutral-200 rounded-full w-full" />
-                  <div className="h-4 bg-neutral-200 rounded-full w-2/3" />
-                  <div className="flex justify-between items-center pt-2">
-                    <div className="h-5 bg-neutral-200 rounded-full w-1/4" />
-                    <div className="h-9 bg-neutral-200 rounded-full w-20" />
+                <div className="w-full aspect-[3/4] bg-neutral-200" />
+                <div className="p-5 space-y-3">
+                  <div className="h-3 bg-neutral-200 rounded-full w-1/3" />
+                  <div className="h-5 bg-neutral-200 rounded-full w-3/4" />
+                  <div className="h-4 bg-neutral-200 rounded-full w-1/2" />
+                  <div className="pt-2 flex justify-between">
+                    <div className="h-6 bg-neutral-200 rounded-full w-16" />
                   </div>
                 </div>
               </div>
             ))}
           </div>
         ) : (
-          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {data?.products.map((p, i) => (
               <motion.div
                 key={p.id}
-                initial={{ opacity: 0, y: 25 }}
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.05 }}
-                className="relative group h-full rounded-3xl overflow-hidden bg-white border border-[#e6d9d5] hover:border-[#d8c4c0] shadow-[0_10px_30px_rgba(0,0,0,0.06)] hover:shadow-[0_25px_50px_rgba(0,0,0,0.12)] transition-all duration-700 flex flex-col"
+                transition={{ duration: 0.4, delay: i * 0.05 }}
+                className="group relative flex flex-col rounded-[24px] bg-white border border-[#f2e8e6] shadow-[0_2px_10px_rgba(0,0,0,0.02)] hover:shadow-[0_20px_40px_rgba(192,128,121,0.1)] hover:border-[#debcb8] transition-all duration-500 overflow-hidden"
               >
-                {/* Image Container */}
-                <div className="relative overflow-hidden h-96 bg-gradient-to-br from-[#f9ece9] to-[#f0dcd8]">
+                {/* Image Section */}
+                <div className="relative aspect-[3/4] overflow-hidden bg-[#faf5f4]">
                   <Image
                     src={p.img}
                     alt={p.name}
                     fill
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    className="w-full h-full object-cover transition-transform duration-[1000ms] ease-out group-hover:scale-105"
-                    loading="lazy"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                   />
-                  {/* Subtle overlay on hover */}
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-all duration-500" />
+
+                  {/* Overlay Actions */}
+                  <div className="absolute inset-0 bg-black/0 transition-colors duration-300 group-hover:bg-black/10" />
+
+                  <div className="absolute inset-x-0 bottom-0 p-4 translate-y-full opacity-0 transition-all duration-300 ease-out group-hover:translate-y-0 group-hover:opacity-100 flex gap-2 justify-center pb-6 bg-gradient-to-t from-black/40 to-transparent">
+                    <button className="flex-1 bg-white text-[#3f2f2d] hover:bg-[#f9ece9] py-3 rounded-full text-xs font-bold uppercase tracking-wider shadow-lg transition-colors flex items-center justify-center gap-2">
+                      <span>Add to Cart</span>
+                    </button>
+                    <button
+                      className="h-10 w-10 bg-white/90 hover:bg-white text-[#3f2f2d] rounded-full flex items-center justify-center shadow-lg transition-colors"
+                      aria-label="Quick View"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      >
+                        <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z" />
+                        <circle cx="12" cy="12" r="3" />
+                      </svg>
+                    </button>
+                  </div>
+
+                  {/* Badges */}
+                  {i < 3 && (
+                    <div className="absolute top-3 left-3 px-3 py-1 bg-white/90 backdrop-blur-sm rounded-full border border-[#f0e6e4] shadow-sm">
+                      <span className="text-[10px] font-bold uppercase tracking-widest text-[#7a4b47]">
+                        Best Seller
+                      </span>
+                    </div>
+                  )}
                 </div>
 
-                {/* Content Section */}
-                <div className="p-8 flex flex-col flex-grow">
-                  {/* Premium badge indicator */}
-                  <div className="mb-4 h-1 w-8 bg-gradient-to-r from-[#7a4b47] to-[#d8c4c0] rounded-full" />
+                {/* Details Section */}
+                <div className="flex flex-col flex-grow p-5">
+                  <div className="mb-2">
+                    <span className="text-[10px] font-bold uppercase tracking-widest text-[#a38e8a]">
+                      {p.category.replace("-", " ")}
+                    </span>
+                  </div>
 
-                  {/* Title */}
-                  <h3 className="text-lg text-[#2f2423] font-light leading-snug tracking-tight line-clamp-2 mb-2">
-                    {p.name}
-                  </h3>
+                  <Link
+                    href={`/product/${p.id}`}
+                    className="block group-hover:text-[#a35d55] transition-colors duration-300"
+                  >
+                    <h3 className="text-base font-medium text-[#2f2423] leading-snug line-clamp-2 mb-2 min-h-[2.5em]">
+                      {p.name}
+                    </h3>
+                  </Link>
 
-                  {/* Description */}
-                  <p className="text-sm text-[#715f5b] leading-relaxed line-clamp-2 flex-grow mb-6 font-light">
+                  {/* Rating Display - Dynamic */}
+                  <div className="flex items-center gap-1 mb-3">
+                    {[1, 2, 3, 4, 5].map((star) => (
+                      <svg
+                        key={star}
+                        className={`w-3 h-3 ${
+                          star <= Math.round(p.rating)
+                            ? "text-[#dcbdb9]"
+                            : "text-gray-200"
+                        }`}
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                      </svg>
+                    ))}
+                    <span className="text-xs text-[#a38e8a] ml-1">
+                      ({p.reviews})
+                    </span>
+                  </div>
+
+                  <p className="text-sm text-[#715f5b] line-clamp-2 mb-4 leading-relaxed opacity-80">
                     {p.blurb}
                   </p>
 
-                  {/* Premium divider */}
-                  <div className="h-[1px] bg-gradient-to-r from-[#e8dcd7] via-[#e8dcd7] to-transparent mb-6" />
-
-                  {/* Price & Button */}
-                  <div className="flex items-center justify-between gap-4">
-                    <div>
-                      <p className="text-xs text-[#6a5854] font-light tracking-wide mb-1 uppercase">
+                  <div className="mt-auto pt-4 border-t border-[#f2e8e6] flex items-center justify-between">
+                    <div className="flex flex-col">
+                      <span className="text-xs text-[#a38e8a] uppercase font-medium">
                         Price
-                      </p>
-                      <p className="text-2xl text-[#3c302e] font-light tracking-tight">
-                        ${p.price}
-                      </p>
+                      </span>
+                      <span className="text-lg font-semibold text-[#3c302e]">
+                        ${p.price.toFixed(2)}
+                      </span>
                     </div>
-
                     <Link
                       href={`/product/${p.id}`}
-                      className="px-6 py-3 rounded-full bg-gradient-to-r from-[#7a4b47] to-[#6a3f3b] text-[#f9ece9] shadow-lg shadow-[#7a4b47]/40 hover:shadow-xl hover:shadow-[#7a4b47]/50 text-sm font-medium transition-all duration-300 whitespace-nowrap uppercase tracking-wide"
+                      className="text-xs font-bold uppercase tracking-wider text-[#a35d55] hover:text-[#7a4b47] transition-colors border-b border-[#a35d55]/30 hover:border-[#7a4b47] pb-0.5"
                     >
-                      View
+                      View Details
                     </Link>
                   </div>
                 </div>
