@@ -26,6 +26,8 @@ export default function ProductPage({ params }: { params: { id: string } }) {
     blurb: "",
     link: "",
     category: "cosmetics",
+    rating: 0,
+    reviews: 0,
   };
 
   useEffect(() => {

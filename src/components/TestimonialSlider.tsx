@@ -83,7 +83,7 @@ export function TestimonialSlider() {
                 ))}
               </div>
               <p className="text-lg font-light text-neutral-700 italic">
-                "{t.text}"
+                &quot;{t.text}&quot;
               </p>
               <div className="mt-auto pt-4 border-t border-rose-50">
                 <p className="font-medium text-[#4a2e2b]">{t.name}</p>

@@ -36,7 +36,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
       const raw = localStorage.getItem("cart") || "[]";
       const parsed = JSON.parse(raw);
       if (Array.isArray(parsed)) setCartState(parsed);
-    } catch (e) {
+    } catch {
       // ignore
     }
   }, []);
@@ -47,7 +47,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
       localStorage.setItem("cart", JSON.stringify(cart));
       // dispatch a storage event for other windows
       window.dispatchEvent(new Event("cart:updated"));
-    } catch (e) {
+    } catch {
       // ignore
     }
   }, [cart]);
@@ -59,7 +59,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
         try {
           const parsed = e.newValue ? JSON.parse(e.newValue) : [];
           if (Array.isArray(parsed)) setCartState(parsed);
-        } catch (err) {}
+        } catch {}
       }
     }
 
@@ -69,7 +69,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
         const raw = localStorage.getItem("cart") || "[]";
         const parsed = JSON.parse(raw);
         if (Array.isArray(parsed)) setCartState(parsed);
-      } catch (err) {}
+      } catch {}
     }
 
     window.addEventListener("storage", onStorage);
@@ -88,7 +88,9 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     setCartState((prev) => {
       const existing = prev.find((p) => p.id === item.id);
       if (existing) {
-        return prev.map((p) => (p.id === item.id ? { ...p, qty: p.qty + qty } : p));
+        return prev.map((p) =>
+          p.id === item.id ? { ...p, qty: p.qty + qty } : p
+        );
       }
       return [...prev, { ...item, qty }];
     });

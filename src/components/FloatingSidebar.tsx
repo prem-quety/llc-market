@@ -5,13 +5,6 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { useState, useCallback, useEffect } from "react";
 import { dynamicCategories, categoryLabels } from "@/components/Products";
 
-const categories = [
-  { id: "all", label: "All Products", icon: "🎯" },
-  { id: "home", label: "Home Rituals", icon: "🏡" },
-  { id: "scents", label: "Scents & Oils", icon: "🌿" },
-  { id: "textiles", label: "Textiles", icon: "🧵" },
-];
-
 const sortOptions = [
   { value: "default", label: "Featured" },
   { value: "price-low", label: "Price: Low to High" },

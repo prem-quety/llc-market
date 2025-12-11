@@ -74,7 +74,7 @@ export function ShopPageContent() {
     (newSort: string) => {
       router.push(`/shop?page=1&sort=${newSort}&category=${category}`);
     },
-    [category, router, sort] // include sort
+    [category, router] // include sort
   );
 
   return (

@@ -76,7 +76,7 @@ export default function ContactPage() {
               transition={{ duration: 0.6, delay: 0.1 }}
               className="text-5xl md:text-7xl font-light text-[#2f2423] mb-8 tracking-tight"
             >
-              Let's create something beautiful.
+              Let&apos;s create something beautiful.
             </motion.h1>
             <motion.p
               initial={{ opacity: 0 }}
@@ -85,7 +85,7 @@ export default function ContactPage() {
               className="text-lg md:text-xl text-[#6a5854] font-light leading-relaxed max-w-2xl mx-auto"
             >
               We are always open to new ideas, collaborations, and stories. Tell
-              us what's on your mind.
+              us what&apos;s on your mind.
             </motion.p>
           </div>
 
@@ -109,7 +109,7 @@ export default function ContactPage() {
 
                 <div className="absolute inset-x-0 bottom-0 p-8 text-white">
                   <p className="font-serif text-2xl md:text-3xl italic opacity-90 mb-2">
-                    "Simplicity is the ultimate sophistication."
+                    &quot;Simplicity is the ultimate sophistication.&quot;
                   </p>
                   <p className="text-sm font-medium tracking-widest opacity-80 uppercase">
                     — The Studio

@@ -8,7 +8,7 @@ import { Autoplay } from "./AutoSlider";
 import { products } from "./Products";
 
 export default function ProductGrid() {
-  const [current, setCurrent] = useState(0);
+  const [, setCurrent] = useState(0);
 
   const [sliderRef, slider] = useKeenSlider<HTMLDivElement>({
     loop: true,
@@ -58,8 +58,7 @@ export default function ProductGrid() {
           <div className="pointer-events-none absolute right-0 top-0 h-full w-10 sm:w-14 bg-gradient-to-l from-[#fdf6f5] to-transparent z-10" />
 
           <div ref={sliderRef} className="keen-slider">
-            {products.map((p, idx) => {
-              const isActive = idx === current;
+            {products.map((p) => {
               return (
                 <div
                   key={p.id}
