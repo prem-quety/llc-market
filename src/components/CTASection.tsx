@@ -49,26 +49,26 @@ export function Footer() {
               </li>
               <li>
                 <Link
-                  href="/shop?category=cosmetics"
+                  href="/shop?category=beauty-self-care"
                   className="hover:text-[#7a4b47] transition-colors"
                 >
-                  Cosmetics
+                  Beauty & Self Care
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/shop?category=home-decor"
+                  href="/shop?category=home-kitchen"
                   className="hover:text-[#7a4b47] transition-colors"
                 >
-                  Home Decor
+                  Home & Kitchen
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/shop?category=aesthetic"
+                  href="/shop?category=office-products"
                   className="hover:text-[#7a4b47] transition-colors"
                 >
-                  Aesthetic Sets
+                  Office Products
                 </Link>
               </li>
               <li>

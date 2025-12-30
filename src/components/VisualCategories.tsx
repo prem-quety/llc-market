@@ -6,25 +6,25 @@ import { motion } from "framer-motion";
 
 const categories = [
   {
-    title: "Curated Living",
-    subtitle: "Elevate your sanctuary",
-    img: "/assets/images/lavendar.jpg",
-    link: "/shop?category=home-decor",
+    title: "Curated Kitchen",
+    subtitle: "Elevate your home",
+    img: "https://images.unsplash.com/photo-1520970627878-360d5bfa74d0?w=1080",
+    link: "/shop?category=home-kitchen",
     theme: "from-amber-200/20 to-amber-100/20",
   },
   {
     title: "Self Rituals",
     subtitle: "Beauty in the everyday",
-    img: "/assets/images/perfume.png",
-    link: "/shop?category=cosmetics",
+    img: "https://images.unsplash.com/photo-1600428853876-fb5a850b444f?auto=format&fit=crop&q=80&w=1080",
+    link: "/shop?category=beauty-self-care",
     theme: "from-rose-200/20 to-rose-100/20",
   },
   {
-    title: "Art Objects",
-    subtitle: "Statement pieces",
-    img: "/assets/images/vase.avif",
-    link: "/shop?category=aesthetic",
-    theme: "from-stone-300/20 to-stone-200/20",
+    title: "Office Essentials",
+    subtitle: "Focus and flow",
+    img: "https://images.unsplash.com/photo-1588619461332-4458db9fa127?w=1080",
+    link: "/shop?category=office-products",
+    theme: "from-blue-200/20 to-blue-100/20",
   },
 ];
 

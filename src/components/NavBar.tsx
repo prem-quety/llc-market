@@ -226,9 +226,11 @@ export function NavBar() {
               }
             >
               <option value="all">All Products</option>
-              <option value="home">Home Rituals</option>
-              <option value="scents">Scents & Oils</option>
-              <option value="textiles">Textiles</option>
+              {dynamicCategories.map((cat) => (
+                <option key={cat} value={cat}>
+                  {categoryLabels[cat]}
+                </option>
+              ))}
             </select>
 
             <Link

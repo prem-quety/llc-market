@@ -25,7 +25,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
     img: "",
     blurb: "",
     link: "",
-    category: "cosmetics",
+    category: "beauty-self-care",
     rating: 0,
     reviews: 0,
   };
