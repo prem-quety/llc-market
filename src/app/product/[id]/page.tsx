@@ -102,19 +102,39 @@ export default function ProductPage({ params }: { params: { id: string } }) {
               ${p.price}
             </p>
 
-            <button
-              onClick={addToCart}
-              className="
-                mt-8 px-8 py-3 rounded-full
-                bg-[#7a4b47] text-white
-                hover:bg-[#6a3f3b]
-                transition-colors
-                shadow-md shadow-[#7a4b47]/30
-                text-sm font-medium tracking-wide
-              "
-            >
-              {qtyInCart > 0 ? `Add to Cart (${qtyInCart})` : "Add to Cart"}
-            </button>
+            <div className="mt-8 flex flex-wrap gap-4">
+              <button
+                onClick={addToCart}
+                className="
+                  px-8 py-3 rounded-full
+                  bg-[#7a4b47] text-white
+                  hover:bg-[#6a3f3b]
+                  transition-colors
+                  shadow-md shadow-[#7a4b47]/30
+                  text-sm font-medium tracking-wide
+                "
+              >
+                {qtyInCart > 0 ? `Add to Cart (${qtyInCart})` : "Add to Cart"}
+              </button>
+
+              {/* {p.amazonLink && (
+                <a
+                  href={p.amazonLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="
+                    px-8 py-3 rounded-full
+                    border border-[#7a4b47] text-[#7a4b47]
+                    hover:bg-[#7a4b47] hover:text-white
+                    transition-colors
+                    text-sm font-medium tracking-wide
+                    flex items-center justify-center
+                  "
+                >
+                  Buy on Amazon
+                </a>
+              )} */}
+            </div>
 
             <div className="h-[1px] w-full bg-[#e5d6d1] my-10"></div>
 

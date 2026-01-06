@@ -4,6 +4,7 @@ import { useKeenSlider } from "keen-slider/react";
 import "keen-slider/keen-slider.min.css";
 import Image from "next/image";
 import { useState } from "react";
+import Link from "next/link";
 import { Autoplay } from "./AutoSlider";
 import { products } from "./Products";
 
@@ -60,13 +61,15 @@ export default function ProductGrid() {
           <div ref={sliderRef} className="keen-slider">
             {products.map((p) => {
               return (
-                <div
+                <Link
                   key={p.id}
+                  href={p.link}
+                  target={p.link.startsWith("http") ? "_blank" : undefined}
                   className={[
                     "keen-slider__slide group rounded-3xl overflow-hidden bg-white border border-[#f2e8e6]",
                     "transition-all duration-500 ease-[cubic-bezier(0.25,0.4,0.25,1)]",
                     "shadow-[0_4px_20px_rgba(0,0,0,0.02)]",
-                    "hover:shadow-[0_20px_40px_rgba(122,75,71,0.12)] hover:-translate-y-1",
+                    "hover:shadow-[0_20px_40px_rgba(122,75,71,0.12)] hover:-translate-y-1 block",
                   ].join(" ")}
                 >
                   <div className="relative h-56 w-full overflow-hidden">
@@ -97,7 +100,7 @@ export default function ProductGrid() {
                       ${p.price.toLocaleString()}
                     </p>
                   </div>
-                </div>
+                </Link>
               );
             })}
           </div>
